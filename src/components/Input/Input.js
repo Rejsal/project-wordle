@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 
-function Input() {
+function Input({ onSubmit }) {
   const [guess, setGuess] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log({ guess });
+    onSubmit(guess);
     setGuess("");
   };
 
@@ -31,4 +31,4 @@ function Input() {
   );
 }
 
-export default Input;
+export default memo(Input);
