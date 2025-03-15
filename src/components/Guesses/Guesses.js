@@ -1,12 +1,13 @@
 import React, { memo } from "react";
+import { range } from "../../utils";
+import Guess from "../Guess/Guess";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
-function Guesses({ guesses = [] }) {
+function Guesses({ validateGuesses }) {
   return (
     <div className="guess-results">
-      {guesses.map((v) => (
-        <p key={`${v}${crypto.randomUUID()}`} className="guess">
-          {v}
-        </p>
+      {range(NUM_OF_GUESSES_ALLOWED).map((v) => (
+        <Guess key={v} value={validateGuesses[v]} />
       ))}
     </div>
   );
